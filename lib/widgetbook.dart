@@ -1,4 +1,4 @@
-import 'package:app_widgetbook/main.dart';
+import 'package:app_widgetbook/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 
@@ -8,12 +8,61 @@ void main() {
 
 class KnobsExample extends StatelessWidget {
   const KnobsExample({Key? key}) : super(key: key);
+  static const code = """
+    ## Code blocks
+    ```dart
+    style: ElevatedButton.styleFrom(
+    fixedSize: const Size(200, 60),
+    backgroundColor: Colors.red,
+    elevation: context.knobs.slider(
+        min: 0,
+        max: 10,
+        label: 'Elevação',
+        initialValue: 0,
+        description: 'Elevação')),
+    ```
+""";
+
+  Widget showCodeButton(BuildContext context) {
+    return ElevatedButton.icon(
+      onPressed: () => _showCode(context),
+      icon: const Icon(Icons.code),
+      label: const Text('Visualizar código'),
+    );
+  }
+
+  void _showCode(BuildContext context) {
+    showModalBottomSheet<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          height: 400,
+          color: Colors.black26,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                const Text(code),
+                ElevatedButton(
+                  child: const Text('Close BottomSheet'),
+                  onPressed: () => Navigator.pop(context),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final devices = [
       Apple.iPhone11,
       Apple.iPhone12,
+      Samsung.s10,
+      Samsung.s21ultra
     ];
     final deviceFrameBuilder = DefaultDeviceFrame(
       setting: DeviceSetting.firstAsSelected(devices: devices),
@@ -22,21 +71,6 @@ class KnobsExample extends StatelessWidget {
     final activeFrameBuilder = WidgetbookFrame(
       setting: DeviceSetting.firstAsSelected(devices: devices),
     );
-
-    const code = """
-    ## Code blocks
-    ```
-    style: ElevatedButton.styleFrom(
-                                  fixedSize: const Size(200, 60),
-                                  backgroundColor: Colors.red,
-                                  elevation: context.knobs.slider(
-                                      min: 0,
-                                      max: 10,
-                                      label: 'Elevação',
-                                      initialValue: 0,
-                                      description: 'Elevação')),
-    ```
-""";
 
     return Widgetbook.material(
       addons: [
@@ -73,76 +107,27 @@ class KnobsExample extends StatelessWidget {
       },
       directories: [
         WidgetbookCategory(
-          name: 'Pages',
+          name: 'Widgets',
           children: [
             WidgetbookComponent(
-              name: 'On boarding',
+              name: 'Contained Buttons',
               useCases: [
                 WidgetbookUseCase(
-                  name: 'Home Page',
-                  builder: (context) => MyHomePage(
-                    title: context.knobs
-                        .text(label: 'Title', initialValue: 'Title'),
-                    incrementBy: context.knobs
-                            .nullableSlider(
-                                label: 'Increment By',
-                                min: 0,
-                                initialValue: 5,
-                                max: 10,
-                                divisions: 10)
-                            ?.toInt() ??
-                        0,
-                    countLabel: context.knobs.nullableText(
-                      label: 'Count Label',
-                      initialValue: 'Current Count',
-                      description:
-                          'This is the text that appears above the current count of increments',
-                    ),
-                    iconData: context.knobs.options(
-                      label: 'Icon',
-                      options: [
-                        Icons.add,
-                        Icons.crop_square_sharp,
-                        Icons.circle
-                      ],
-                    ),
-                    showToolTip: context.knobs.boolean(
-                      label: 'Show Increment Tool Tip',
-                      description:
-                          'This is the tooltip that is displayed when hovering over the increment button',
-                      initialValue: true,
-                    ),
-                  ),
-                ),
-                WidgetbookUseCase(
-                  name: 'Button',
+                  name: 'Primary Button',
                   builder: (context) => Scaffold(
                     body: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        showCodeButton(context),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  fixedSize: const Size(200, 60),
-                                  backgroundColor: Colors.blueAccent,
-                                  elevation: context.knobs.slider(
-                                      min: 0,
-                                      max: 10,
-                                      label: 'Elevação',
-                                      initialValue: 0,
-                                      description: 'Elevação')),
-                              onPressed: () {},
-                              child: Text(
-                                context.knobs.text(
-                                  label: 'Texto do Botão',
-                                  initialValue: 'Texto do botão',
-                                ),
-                                style: const TextStyle(color: Colors.white),
-                              ),
-                            ),
+                            Button.primary(
+                                minElevation: 0,
+                                maxElevation: 10,
+                                fontColor: Colors.white,
+                                initialValue: 0)
                           ],
                         ),
                       ],
@@ -153,57 +138,68 @@ class KnobsExample extends StatelessWidget {
                   name: 'Button Error',
                   builder: (context) => Scaffold(
                     body: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        showCodeButton(context),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  fixedSize: const Size(200, 60),
-                                  backgroundColor: Colors.red,
-                                  elevation: context.knobs.slider(
-                                      min: 0,
-                                      max: 10,
-                                      label: 'Elevação',
-                                      initialValue: 0,
-                                      description: 'Elevação')),
-                              onPressed: () {
-                                showModalBottomSheet<void>(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return Container(
-                                      height: 400,
-                                      color: Colors.black26,
-                                      child: Center(
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: <Widget>[
-                                            const Text(code),
-                                            ElevatedButton(
-                                              child: const Text(
-                                                  'Close BottomSheet'),
-                                              onPressed: () =>
-                                                  Navigator.pop(context),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                );
-                              },
-                              child: Text(
-                                context.knobs.text(
-                                  label: 'Texto do Botão',
-                                  initialValue: 'Texto do botão',
-                                ),
-                                style: const TextStyle(color: Colors.white),
-                              ),
-                            ),
+                            Button.error(
+                                minElevation: 0,
+                                maxElevation: 10,
+                                fontColor: Colors.white,
+                                initialValue: 0)
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Button Alert',
+                  builder: (context) => Scaffold(
+                    body: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        showCodeButton(context),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Button.alert(
+                                minElevation: 0,
+                                maxElevation: 10,
+                                fontColor: Colors.white,
+                                initialValue: 0)
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                WidgetbookUseCase(
+                  name: 'Button Success',
+                  builder: (context) => Scaffold(
+                    body: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        showCodeButton(context),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Button.success(
+                                minElevation: 0,
+                                maxElevation: 10,
+                                fontColor: Colors.white,
+                                initialValue: 0)
                           ],
                         ),
                         const SizedBox(
