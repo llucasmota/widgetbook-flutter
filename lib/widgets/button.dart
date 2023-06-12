@@ -62,15 +62,15 @@ class Button extends StatelessWidget {
       style: ElevatedButton.styleFrom(
           fixedSize: const Size(200, 60),
           backgroundColor: _color,
-          elevation: context.knobs.slider(
+          elevation: context.knobs.double.slider(
+              label: 'Slider Elevation',
+              initialValue: initialValue,
               min: minElevation,
               max: maxElevation,
-              label: 'Elevação',
-              initialValue: initialValue,
-              description: 'Elevação')),
+              divisions: 10)),
       onPressed: () {},
       child: Text(
-        context.knobs.text(
+        context.knobs.string(
           label: 'Texto do Botão',
           initialValue: 'Texto do botão',
         ),

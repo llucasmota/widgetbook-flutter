@@ -1,8 +1,8 @@
 version: "Apple Swift version 5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)"
 options: "dcdd4205668e9f9836c3d65663e0a7d7d214f2207b9ae0f4ae3a9e3716d362cb"
-build_start_time: [1685965174, 241467000]
-build_end_time: [1685965178, 339471000]
+build_start_time: [1686521474, 484568000]
+build_end_time: [1686521476, 208764000]
 inputs:
-  "/Users/lucasmota/Developer/flutter_widgetbook/macos/Flutter/GeneratedPluginRegistrant.swift": [1685965159, 721442982]
+  "/Users/lucasmota/Developer/flutter_widgetbook/macos/Flutter/GeneratedPluginRegistrant.swift": [1686521464, 959826732]
   "/Users/lucasmota/Developer/flutter_widgetbook/macos/Runner/AppDelegate.swift": [1663169498, 0]
   "/Users/lucasmota/Developer/flutter_widgetbook/macos/Runner/MainFlutterWindow.swift": [1684319518, 665800810]

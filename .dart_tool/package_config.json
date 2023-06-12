@@ -8,12 +8,6 @@
       "languageVersion": "2.18"
     },
     {
-      "name": "bloc",
-      "rootUri": "file:///Users/lucasmota/.pub-cache/hosted/pub.dev/bloc-8.1.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "boolean_selector",
       "rootUri": "file:///Users/lucasmota/.pub-cache/hosted/pub.dev/boolean_selector-2.1.1",
       "packageUri": "lib/",
@@ -62,12 +56,6 @@
       "languageVersion": "3.0"
     },
     {
-      "name": "flutter_bloc",
-      "rootUri": "file:///Users/lucasmota/.pub-cache/hosted/pub.dev/flutter_bloc-8.1.3",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "flutter_lints",
       "rootUri": "file:///Users/lucasmota/.pub-cache/hosted/pub.dev/flutter_lints-2.0.1",
       "packageUri": "lib/",
@@ -80,22 +68,10 @@
       "languageVersion": "3.0"
     },
     {
-      "name": "flutter_web_plugins",
-      "rootUri": "file:///Users/lucasmota/development/flutter/packages/flutter_web_plugins",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
       "name": "freezed_annotation",
       "rootUri": "file:///Users/lucasmota/.pub-cache/hosted/pub.dev/freezed_annotation-2.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.17"
-    },
-    {
-      "name": "go_router",
-      "rootUri": "file:///Users/lucasmota/.pub-cache/hosted/pub.dev/go_router-6.5.9",
-      "packageUri": "lib/",
-      "languageVersion": "2.18"
     },
     {
       "name": "js",
@@ -114,12 +90,6 @@
       "rootUri": "file:///Users/lucasmota/.pub-cache/hosted/pub.dev/lints-2.1.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
-    },
-    {
-      "name": "logging",
-      "rootUri": "file:///Users/lucasmota/.pub-cache/hosted/pub.dev/logging-1.2.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.19"
     },
     {
       "name": "matcher",
@@ -148,12 +118,6 @@
     {
       "name": "path",
       "rootUri": "file:///Users/lucasmota/.pub-cache/hosted/pub.dev/path-1.8.3",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "provider",
-      "rootUri": "file:///Users/lucasmota/.pub-cache/hosted/pub.dev/provider-6.0.5",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -207,21 +171,15 @@
     },
     {
       "name": "widgetbook",
-      "rootUri": "file:///Users/lucasmota/.pub-cache/hosted/pub.dev/widgetbook-3.0.0-beta.14",
+      "rootUri": "file:///Users/lucasmota/.pub-cache/hosted/pub.dev/widgetbook-3.0.0-rc.1",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
     {
       "name": "widgetbook_core",
-      "rootUri": "file:///Users/lucasmota/.pub-cache/hosted/pub.dev/widgetbook_core-3.0.0-beta.8",
+      "rootUri": "file:///Users/lucasmota/.pub-cache/hosted/pub.dev/widgetbook_core-3.0.0-rc.1",
       "packageUri": "lib/",
-      "languageVersion": "2.18"
-    },
-    {
-      "name": "widgetbook_models",
-      "rootUri": "file:///Users/lucasmota/.pub-cache/hosted/pub.dev/widgetbook_models-3.0.0-beta.4",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.17"
     },
     {
       "name": "app_widgetbook",
@@ -230,7 +188,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-06-05T10:42:51.090853Z",
+  "generated": "2023-06-10T20:46:29.380186Z",
   "generator": "pub",
   "generatorVersion": "3.0.2"
 }

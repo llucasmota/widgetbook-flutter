@@ -1,3 +1,4 @@
+import 'package:app_widgetbook/widget_cases/switcher.dart';
 import 'package:app_widgetbook/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
@@ -58,53 +59,27 @@ class KnobsExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final devices = [
-      Apple.iPhone11,
-      Apple.iPhone12,
-      Samsung.s10,
-      Samsung.s21ultra
+    final List<DeviceInfo?> devices = [
+      Devices.ios.iPhone13,
+      Devices.ios.iPhone12ProMax,
+      Devices.ios.iPhoneSE,
+      Devices.android.samsungGalaxyA50,
+      Devices.android.samsungGalaxyS20,
     ];
-    final deviceFrameBuilder = DefaultDeviceFrame(
-      setting: DeviceSetting.firstAsSelected(devices: devices),
-    );
-
-    final activeFrameBuilder = WidgetbookFrame(
-      setting: DeviceSetting.firstAsSelected(devices: devices),
-    );
 
     return Widgetbook.material(
       addons: [
-        FrameAddon(
-          setting: FrameSetting.firstAsSelected(
-            frames: [
-              deviceFrameBuilder,
-              NoFrame(),
-              activeFrameBuilder,
-            ],
-          ),
+        DeviceFrameAddon(
+          devices: devices,
         ),
         TextScaleAddon(
-          setting: TextScaleSetting.firstAsSelected(
-            textScales: [1, 2],
-          ),
+          scales: [1, 2],
         ),
-        CustomThemeAddon<ThemeData>(
-          setting: CustomThemeSetting.firstAsSelected(
-            themes: [
-              WidgetbookTheme(data: ThemeData.dark(), name: 'dark'),
-              WidgetbookTheme(data: ThemeData.light(), name: 'light'),
-            ],
-          ),
-        ),
+        MaterialThemeAddon(themes: [
+          WidgetbookTheme(name: 'Dark', data: ThemeData.dark()),
+          WidgetbookTheme(name: 'Light', data: ThemeData.light()),
+        ])
       ],
-      appBuilder: (context, child) {
-        final frameBuilder = context.frameBuilder;
-        final theme = context.theme<ThemeData>();
-        return Theme(
-          data: theme!,
-          child: frameBuilder!(context, child),
-        );
-      },
       directories: [
         WidgetbookCategory(
           name: 'Widgets',
@@ -209,8 +184,50 @@ class KnobsExample extends StatelessWidget {
                     ),
                   ),
                 ),
+                WidgetbookUseCase(
+                  name: 'Button Switcher',
+                  builder: (context) => Scaffold(
+                    body: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        showCodeButton(context),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Switch.adaptive(
+                              value: true,
+                              onChanged: (value) {
+                                print(value);
+                              },
+                            )
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
+            WidgetbookComponent(
+              name: 'Switcher',
+              useCases: [
+                WidgetbookUseCase(
+                    builder: (context) {
+                      return Switcher(
+                          demonstrationMode: true,
+                          disabledByDefault: context.knobs.boolean(
+                              label: 'Switcher desabilitado por padrão'),
+                          platform: context.knobs.list(
+                              label: 'Tipo de Switch',
+                              options: ['ANDROID', 'IOS']));
+                    },
+                    name: 'Switcher'),
+              ],
+            )
           ],
         ),
       ],
