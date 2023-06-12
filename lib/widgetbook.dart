@@ -1,4 +1,4 @@
-import 'package:app_widgetbook/widget_cases/switcher.dart';
+import 'package:app_widgetbook/widgets/switcher.dart';
 import 'package:app_widgetbook/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
@@ -12,15 +12,14 @@ class KnobsExample extends StatelessWidget {
   static const code = """
     ## Code blocks
     ```dart
-    style: ElevatedButton.styleFrom(
-    fixedSize: const Size(200, 60),
-    backgroundColor: Colors.red,
-    elevation: context.knobs.slider(
-        min: 0,
-        max: 10,
-        label: 'Elevação',
-        initialValue: 0,
-        description: 'Elevação')),
+      Button.primary(
+      platform: context.knobs.list(
+          label: 'Tipo de Switch',
+          options: ['ANDROID', 'IOS']),
+          minElevation: 0,
+          maxElevation: 10,
+          fontColor: Colors.white,
+          initialValue: 0)
     ```
 """;
 
@@ -38,6 +37,7 @@ class KnobsExample extends StatelessWidget {
       builder: (BuildContext context) {
         return Container(
           height: 400,
+          width: double.infinity,
           color: Colors.black26,
           child: Center(
             child: Column(
@@ -99,6 +99,9 @@ class KnobsExample extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Button.primary(
+                                platform: context.knobs.list(
+                                    label: 'Tipo de Switch',
+                                    options: ['ANDROID', 'IOS']),
                                 minElevation: 0,
                                 maxElevation: 10,
                                 fontColor: Colors.white,
@@ -121,6 +124,9 @@ class KnobsExample extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Button.error(
+                                platform: context.knobs.list(
+                                    label: 'Tipo de Switch',
+                                    options: ['ANDROID', 'IOS']),
                                 minElevation: 0,
                                 maxElevation: 10,
                                 fontColor: Colors.white,
@@ -146,6 +152,9 @@ class KnobsExample extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Button.alert(
+                                platform: context.knobs.list(
+                                    label: 'Tipo de Switch',
+                                    options: ['ANDROID', 'IOS']),
                                 minElevation: 0,
                                 maxElevation: 10,
                                 fontColor: Colors.white,
@@ -171,36 +180,13 @@ class KnobsExample extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Button.success(
+                                platform: context.knobs.list(
+                                    label: 'Tipo de Switch',
+                                    options: ['ANDROID', 'IOS']),
                                 minElevation: 0,
                                 maxElevation: 10,
                                 fontColor: Colors.white,
                                 initialValue: 0)
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                WidgetbookUseCase(
-                  name: 'Button Switcher',
-                  builder: (context) => Scaffold(
-                    body: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        showCodeButton(context),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Switch.adaptive(
-                              value: true,
-                              onChanged: (value) {
-                                print(value);
-                              },
-                            )
                           ],
                         ),
                         const SizedBox(
